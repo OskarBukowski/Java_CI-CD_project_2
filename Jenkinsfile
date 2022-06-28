@@ -12,18 +12,7 @@ pipeline {
 
     stages {
 
-        stage("
-
-
-
-
-
-
-
-
-
-
-        ")
+        stage("x")
 
     }
 
