@@ -1,20 +1,24 @@
 pipeline {
-    parameters {
-        string(name:'LOGIN', defaultValue: 'admin', description: 'Login here')
-        password(name:'PASSWORD', defaultValue: 'password', description: 'Password here')
-    }
-
-    agent {label "agent"}
-
-    environment {
-        CREDENTIALS = credentials("$LOGIN")
-    }
+    agent {label "aws-virginia"}
 
     stages {
+            stage("Setting variables") {
+                steps {
+                    sh '''
+                    echo "PATH = ${PATH}"
+                    echo "M2_HOME = ${M2_HOME}"
+                    '''
+                }
 
-        stage("xyxnncvvvbbbbb")
-
-    }
-
-
+            stage ('Build') {
+                steps {
+                    sh 'mvn -Dmaven.test.failure.ignore=true install'
+                }
+                post {
+                    success {
+                        junit 'target/surefire-reports/**/*.xml'
+                    }
+                }
+            }
+        }
 }
