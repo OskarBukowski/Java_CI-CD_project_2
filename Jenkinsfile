@@ -11,7 +11,7 @@ pipeline {
         }
         stage ('Testing') {
             steps {
-                sh 'mvn test'
+                sh 'pwd'
             }
         }
     }
