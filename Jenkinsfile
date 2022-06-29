@@ -1,6 +1,5 @@
 pipeline {
-    agent {label "aws-virginia"}
-
+    agent any
     stages {
         stage("Setting variables") {
             steps {
@@ -10,9 +9,9 @@ pipeline {
                 '''
             }
         }
-        stage ('Test') {
+        stage ('Testing') {
             steps {
-                sh 'mvn test'
+                sh 'pwd'
             }
         }
     }
