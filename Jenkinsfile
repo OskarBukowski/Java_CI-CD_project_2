@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent {label "aws-virginia"}
     stages {
         stage("Setting variables") {
             steps {
