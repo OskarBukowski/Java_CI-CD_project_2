@@ -22,7 +22,7 @@ pipeline {
             }
         }
 
-        stage ('Build') {
+        stage ('Test') {
             steps {
                 sh 'mvn test'
             }
