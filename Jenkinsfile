@@ -1,5 +1,8 @@
 pipeline {
     agent {label "aws-virginia"}
+    environment {
+        PATH = "/opt/apache-maven-3.8.6/apache-maven/src/bin:$PATH"
+    }
     stages {
         stage("Setting variables") {
             steps {
@@ -11,7 +14,7 @@ pipeline {
         }
         stage ('Testing') {
             steps {
-                sh 'pwd'
+                sh 'maven test'
             }
         }
     }
